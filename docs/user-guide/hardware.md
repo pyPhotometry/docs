@@ -26,10 +26,8 @@ The LED driver circuits are voltage controlled current sinks in which an op amp 
 
 # Additional components
 
-To make a complete photometetry system the acquisition board needs to be paired with LEDs, photorecievers, filter cubes and other optical components.  A [parts list]() for a complete set of additional components that can be used with the aquisition board for green/red two colour experiments (e.g. GCaMP/TdTomato) is provided in the hardware repository.  
+To make a complete photometetry system the acquisition board needs to be paired with LEDs, photorecievers, filter cubes and other optical components.  A [parts list](https://bitbucket.org/takam/pyphotometry_hardware/src) for a complete set of additional components that can be used with the aquisition board for green/red two colour experiments (e.g. GCaMP/TdTomato) is provided in the hardware repository.  
 
 If you plan to use the time-division multiplexed illumination modes ensure that the photodetectors used have sufficient bandwidth.  We use [Newport 2151](https://www.newport.com/p/2151) photorecievers which have a bandwidth of 0-750 Hz.
 
 The mounting holes on the acquisition board have a 50 x 75mm spacing so the board can be mounted directly onto a Thorlabs metric optical breadboard using mM6 to M3 thread adaptors.
-
-
