@@ -1,6 +1,6 @@
 site_name: pyPhotometry
 site_url: https://pyphotometry.readthedocs.io/
-site_description: Open source, Python based, Photometry acquisition.
+site_description: Open source, Python based, fiber photometry acquisition.
 site_author: Thomas Akam
 
 theme:
@@ -14,12 +14,12 @@ pages:
 - User Guide:
     - Graphical user interface (GUI): user-guide/graphical-user-interface.md
     - Hardware: user-guide/hardware.md
-    - Data: user-guide/data.md
+    - Importing data: user-guide/importing-data.md
+- Resources:
+    - Optical Components: resources/optical-components.md
 
 - About:
     - Release Notes: about/release-notes.md
     - License: about/license.md
 
 copyright: Copyright &copy; 2018 <a href="/release-notes/">Thomas Akam</a>.
-
-#google_analytics: ['UA-27795084-5', 'mkdocs.org']
