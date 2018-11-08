@@ -15,6 +15,7 @@ pages:
     - Graphical user interface (GUI): user-guide/graphical-user-interface.md
     - Hardware: user-guide/hardware.md
     - Importing data: user-guide/importing-data.md
+    - Troubleshooting: user-guide/troubleshooting.md
 - Resources:
     - Optical Components: resources/optical-components.md
 
