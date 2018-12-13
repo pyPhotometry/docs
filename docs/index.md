@@ -1,6 +1,6 @@
 # pyPhotometry
 
-Open source, Python based, fiber photometry data acquisition.
+**Open source, Python based, fiber photometry data acquisition.**
 
 ---
 

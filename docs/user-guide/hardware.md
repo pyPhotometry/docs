@@ -29,8 +29,8 @@ The LED driver circuits are voltage controlled current sinks in which an op amp 
 **Acquisition board**
 
 The acquisition board can be purchased from OEPS for €350 (<info@oeps.tech>) or built from components.  The design files for the acquitition board are in the [hardware repository](https://bitbucket.org/takam/pyphotometry_hardware). To assemble the board from components you will need to get the PCB printed (using either the Gerber or Eagle files) and order the electronic components listed in the BOM (Farnell part numbers are provided).
-
-Assembling the acquisition board requires both surface mount and through hole soldering.  The surface mount soldering can be done either using a reflow oven or hand soldering.  Hand soldering of surface mount components requires a bit of practice but there are lots of [tutorials](https://www.google.co.uk/search?q=surface+mount+soldering+tutorial) online.  Solder all the surface mount components before soldering the through hole components.
+ 
+Assembling the acquisition board requires both surface mount and through hole soldering.  The surface mount soldering can be done either using a reflow oven or hand soldering.  Hand soldering of surface mount components requires a bit of practice but there are lots of [tutorials](https://www.google.co.uk/search?q=surface+mount+soldering+tutorial) online.  Solder all the surface mount components before soldering the through hole components as once the through hole components are in place they will get in the way.  The micropython board is attached to the acqusition board using the male and female 16 way headers.  First solder the female headers onto the micropython board, then insert the male headers into the female headers, mount the micropython on the acquisition board and solder the male headers.
 
 **Optical components**
 
@@ -52,9 +52,9 @@ Attach the Newport photorecievers to the breadboard using the pillars (TRP14/M),
 
 Attach the LEDs to the breadboard using the 12mm M6 bolts.
 
-Connect the photorecievers to the minicube using the 600um core 0.48NA optic fibers  (MFP_600/630/LWMJ-0.48_0.3m_FCM-FCM)
+Connect the photorecievers to the minicube using the 30cm, 600um core 0.48NA optic fibers  (MFP_600/630/LWMJ-0.48_0.3m_FCM-FCM)
 
-Connect the LEDs to the minicube using the 200um core 0.22NA optic fibers (MFP_200/220/LWMJ-0.22_0.3m_FCM-FCM)
+Connect the LEDs to the minicube using the 30cm, 200um core 0.48NA optic fibers (MFP_200/220/LWMJ-0.48_0.3m_FCM-FCM)
 
 Connect the photorecivers to the acquisition board analog inputs using the 30cm BNC cables.
 

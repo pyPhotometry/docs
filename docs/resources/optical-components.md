@@ -6,7 +6,7 @@ The table below lists a set of components that can be used with the acquisition 
 | 465nm   LED   | 1        | CLED_465   | Doric    |
 | 560nm   LED   | 1        | CLED_560                   | Doric    |
 | Minicube   | 1    | FMC5_E1(450-490)_F1(500-540)_E2(550-580)_F2(600-680)_S | Doric  |
-| Fiber patchcord:  LED - Minicube | 2      | MFP_200/220/LWMJ-0.22_0.3m_FCM-FCM | Doric    |
+| Fiber patchcord:  LED - Minicube | 2      | MFP_200/220/LWMJ-0.48_0.3m_FCM-FCM | Doric    |
 | Fiber patchcord:  Minicube - Photoreciever | 2 | MFP_600/630/LWMJ-0.48_0.3m_FCM-FCM | Doric |
 | Fiber   patchcord: Rotary-sample | 1 | MFP_200/220/900-0.48_1m_FCM-MF1.25 | Doric|
 | Pigtailed   rotary joint | 1 | FRJ_1x1_PT_200/230/LWMJ-0.48_1m_FCM_0.2m_FCM | Doric |

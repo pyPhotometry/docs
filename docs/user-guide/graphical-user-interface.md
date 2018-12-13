@@ -40,11 +40,13 @@ Select aquisition mode from the dropdown menu and specify the sampling rate for 
 4. Turn LED 2 on. Read analog 2 sample, subtract baseline, return as signal 2.
 ```
 
-Time division illumination means that crosstalk between the two signals is determined by both the absorbtion and emission spectra of the two flurophores, rather than just by the emission spectra as with continuous illumination.  For flurophores where the emission spectra overlap significantly (e.g. GCaMP with TdTomato or RCaMP) this can very substantially reduce crosstalk.  
+Time division illumination means that crosstalk between the two signals is determined by both the absorbtion and emission spectra of the two flurophores, rather than just by the emission spectra as with continuous illumination.  For flurophores where the emission spectra overlap significantly (e.g. GCaMP with TdTomato or RCaMP) this can very substantially reduce crosstalk. 
 
-Baseline subtraction makes the signals insensitive to bleed-through of ambient light levels, and reduces the influence of low frequency noise sources similarly to lock in amplification.
+Baseline subtraction makes the signals insensitive to bleed-through of ambient light, and reduces the influence of low frequency noise sources similarly to lock in amplification.  
 
 Due to these advantages this aquisition mode is recommended over continuous illumination for two colour measurements.  For more information about time division illumination see the pyPhotometry [manuscript](https://www.biorxiv.org/content/early/2018/10/03/434225).
+
+Baseline subtraction changes the appearence of high frequency noise, as noise present when the baseline sample is read is subtracted from noise when the signal sample is read.  If you need to de-noise a setup (high gain amplifiers in photoreceivers can pick up electrical noise from nearby equipment) it is  recomended to use *2 colour continuous* mode to get a clear picture of the noise.
 
 `1 colour time div.` Uses the same acquistion sequence as `1 colour time div.` except that signal 1 and signal 2 both read analog input 1 (i.e. a single photoreciever).  The typical use case is alternating illumination of GCaMP with 470nm and 405nm LEDs to provide a calcium sensitive and a calcium insensitive (isosbestic) signal for use as a movement control. 
 

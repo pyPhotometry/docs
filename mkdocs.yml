@@ -9,7 +9,7 @@ theme:
 
 #repo_url: https://bitbucket.org/fchampalimaud/pycontrol-docs
 
-pages:
+nav:
 - Home: index.md
 - User Guide:
     - Graphical user interface (GUI): user-guide/graphical-user-interface.md
