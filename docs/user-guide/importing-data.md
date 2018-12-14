@@ -33,6 +33,8 @@ The `import_ppd` function returns a dictionary with the following entries:
 'analog_2_filt' # Filtered analog signal 2 (volts)
 'digital_1'     # Digital signal 1
 'digital_2'     # Digital signal 2
+'pulse_times_1' # Times of rising edges on digital input 1 (ms).
+'pulse_times_2' # Times of rising edges on digital input 2 (ms).
 'time'          # Time of each sample relative to start of recording (ms)
 ```
 
@@ -43,7 +45,7 @@ If you are using Matlab for analysis you can import data with the function [impo
 ```matlab
 data = import_ppd('path\\to\\data_file.ppd')
 ```
-The Matlab import function returns a struct with the same fields as the dictionary returned by the Python import function, but without the filtered versions of the analog signals.
+The Matlab import function returns a struct with the same fields as the dictionary returned by the Python import function, but without the filtered versions of the analog signals or digital input pulse times.
 
 ## Binary data format
 
