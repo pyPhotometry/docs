@@ -55,7 +55,7 @@ Unzip the file and you will have the following folder structure:
 
 ### Hardware
 
-The acquisition board can be purchased from the Open Ephys Production Site for €350 (<info@oeps.tech>) or built from components.  Assembly instructions for a red/green photometry system are provided in the [hardware user guide](user-guide/hardware.md#assembly-instructions).
+The acquisition board can be purchased from the [Open Ephys store](http://www.open-ephys.org/store/pyphotometry) for €350 or built from components.  Assembly instructions for a red/green photometry system are provided in the [hardware user guide](user-guide/hardware.md#assembly-instructions).
 
 ### Running an experiment
 
