@@ -10,7 +10,7 @@
 
 pyPhotometry is system of open source hardware and software for neuroscience fiber photometry data acquisition, consisting of an [acquisition board](user-guide/hardware.md) and [graphical user interface](user-guide/graphical-user-interface.md). 
 
-pyPhotometry supports data aquisition from two analog and two digital inputs, and control of two LEDs via built in LED drivers with an adjustable 0-100mA output.  The system supports time-division multiplexed illumination which allows fluoresence evoked by different excitation wavelengths to be independenly readout from a single photoreciever signal.  For validation experiments see the pyPhotometry [manuscript](https://www.biorxiv.org/content/early/2018/10/03/434225).
+pyPhotometry supports data aquisition from two analog and two digital inputs, and control of two LEDs via built in LED drivers with an adjustable 0-100mA output.  The system supports time-division multiplexed illumination which allows fluoresence evoked by different excitation wavelengths to be independenly readout from a single photoreciever signal.  For validation experiments see the pyPhotometry [manuscript](https://rdcu.be/bpvvJ).
 
 For questions about the pyPhotometry system contact the [google group](https://groups.google.com/forum/#!forum/pycontrol).
 
