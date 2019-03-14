@@ -115,3 +115,9 @@ Analog1, Analog2, Digital1, Digital2
 ```
 
 The *.json* file containing the acquisition settings is a UTF-8 encoded text file which represents a [JSON](https://www.json.org/) object containing the same information as the  binary data files header.  The *.json* files are human readable if opened in a text editor.  The analog signal values in the *.csv* file can be converted into volts using the *volts_per_division* information in the *.json* file.
+
+## Synchronisation
+
+To synchronise pyPhotometry data with behavioural data we typically send sync puses from the behavioural hardware to a pyPhotometry digital input. For more information see the [synchronisation](https://pycontrol.readthedocs.io/en/latest/user-guide/synchronisation/) page of the pyControl docs.
+
+An example analysis showing how to synchronise pyControl behavioural data with neural activity recorded using pyPhotometry is provided in this [data synchronisation](https://github.com/ThomasAkam/data_synchronisation/blob/master/data_synchronisation.ipynb) jupyter notebook.
