@@ -15,7 +15,7 @@ If you are using Python for analysis you can import *.ppd* files using the `impo
 ```python
 from data_import import import_ppd
 
-data = import_ppd('path\\to\\data_file.ppd', low_pass=20, high_pass=0.01)
+data = import_ppd('path\\to\\data_file.ppd', low_pass=20, high_pass=0.001)
 ```
 
 The `import_ppd` function returns a dictionary with the following entries:
@@ -33,6 +33,8 @@ The `import_ppd` function returns a dictionary with the following entries:
 'analog_2_filt' # Filtered analog signal 2 (volts)
 'digital_1'     # Digital signal 1
 'digital_2'     # Digital signal 2
+'pulse_inds_1'  # Locations of rising edges on digital input 1 (samples).
+'pulse_inds_2'  # Locations of rising edges on digital input 2 (samples).
 'pulse_times_1' # Times of rising edges on digital input 1 (ms).
 'pulse_times_2' # Times of rising edges on digital input 2 (ms).
 'time'          # Time of each sample relative to start of recording (ms)

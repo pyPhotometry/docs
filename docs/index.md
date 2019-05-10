@@ -26,7 +26,6 @@ pyControl has the following dependencies:
 - pyserial
 - numpy
 - pyqtgraph
-- pyperclip (optional, used to copy file names to clipboard)
 
 The simplest way to install the required dependencies is to download and install the [Anaconda](https://www.anaconda.com/download/) Python distribution, then use the *conda* package management utility to install the other packages using the following commands in the *Anaconda Prompt*:
 
@@ -35,7 +34,6 @@ conda update conda
 conda install -c anaconda pyserial
 conda install -c anaconda numpy
 conda install -c anaconda pyqtgraph
-conda install -c conda-forge pyperclip
 ```
 
 pyPhotometry has been tested primarily on Windows 10 but in principle should be cross platform.  You may need to install the micropython USB drivers to ensure your operating system recognizes the board and can open a serial connection to it, see [micropython windows setup](http://micropython.org/resources/Micro-Python-Windows-setup.pdf) and the micropython [docs](http://docs.micropython.org/en/latest/pyboard/pyboard/tutorial/repl.html).  The micropython drivers are unsigned so to install them on Windows 10, follow the instructions [here](https://www.maketecheasier.com/install-unsigned-drivers-windows10/) under *Install Unsigned Drivers from Advanced Boot Menu*.  You should only need to do this the first time you install the drivers on a computer.
@@ -61,7 +59,7 @@ The acquisition board can be purchased from the [Open Ephys store](http://www.op
 
 Connect a pyPhotometry acquisition board to the computer with a USB cable, it will show up as both a USB serial port and a flash drive.
 
-Copy the file *photometry_upy.py* from *pyPhotometry/uPY* to the root directory of the acquisition board flash drive.
+Copy the files *photometry_upy.py* and *hardware_config.py* from *pyPhotometry/uPY* to the root directory of the acquisition board flash drive.
 
 Load the GUI by running the file *photometry_gui.py* in the folder *pyPhotometry/GUI*, you will see a GUI window like that shown above.
 
