@@ -17,7 +17,7 @@ Version 0.2.1 2019/05/10 -----------------------------------------------
   import_ppd function in data_import.py.
 
 - Improved error handling so errors always provide an error message
-  with a traceback indicating where the error occured.
+  with a traceback indicating where the error occurred.
 
 - Removed Pyperclip dependency.
 
