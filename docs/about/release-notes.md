@@ -4,7 +4,7 @@
 
 ## Maintenance team
 
-* [Thomas Akam](https://bitbucket.org/takam/) thomas.akam@psy.ox.ac.uk
+* [Thomas Akam](https://github.com/ThomasAkam) thomas.akam@psy.ox.ac.uk
 
 ## Change log
 

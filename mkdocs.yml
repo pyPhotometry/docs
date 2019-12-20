@@ -1,13 +1,12 @@
 site_name: pyPhotometry
 site_url: https://pyphotometry.readthedocs.io/
-site_description: Open source, Python based, fiber photometry acquisition.
+site_description: Open source, Python based, fiber photometry data acquisition.
 site_author: Thomas Akam
 
 theme:
     name: readthedocs
-#    custom_dir:
 
-#repo_url: https://bitbucket.org/fchampalimaud/pycontrol-docs
+repo_url: https://github.com/pyPhotometry/docs
 
 nav:
 - Home: index.md

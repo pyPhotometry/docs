@@ -10,9 +10,13 @@
 
 pyPhotometry is system of open source hardware and software for neuroscience fiber photometry data acquisition, consisting of an [acquisition board](user-guide/hardware.md) and [graphical user interface](user-guide/graphical-user-interface.md). 
 
-pyPhotometry supports data aquisition from two analog and two digital inputs, and control of two LEDs via built in LED drivers with an adjustable 0-100mA output.  The system supports time-division multiplexed illumination which allows fluoresence evoked by different excitation wavelengths to be independenly readout from a single photoreciever signal.  For validation experiments see the pyPhotometry [manuscript](https://rdcu.be/bpvvJ).
+pyPhotometry supports data aquisition from two analog and two digital inputs, and control of two LEDs via built in LED drivers with an adjustable 0-100mA output.  The system supports time-division multiplexed illumination which allows fluoresence evoked by different excitation wavelengths to be independenly readout from a single photoreciever signal.
+
+For validation experiments see the pyPhotometry [manuscript](https://rdcu.be/bpvvJ).
 
 For questions about the pyPhotometry system contact the [google group](https://groups.google.com/forum/#!forum/pycontrol).
+
+pyPhotometry hardware, software and documentation repositories are on [GitHub](https://github.com/pyPhotometry).
 
 ---
 
@@ -20,27 +24,32 @@ For questions about the pyPhotometry system contact the [google group](https://g
 
 ### Dependencies
 
-pyControl has the following dependencies:
+pyPhotometry has the following dependencies:
 
-- Python 3 
+- Python 3  *(version 3.7.5 recomended as pyqtgraph is not currently compatible with 3.8)*
 - pyserial
 - numpy
+- pyqt5
 - pyqtgraph
 
-The simplest way to install the required dependencies is to download and install the [Anaconda](https://www.anaconda.com/download/) Python distribution, then use the *conda* package management utility to install the other packages using the following commands in the *Anaconda Prompt*:
+ On a windows machine that does not already have Python installed, the simplest way to install Python is to download an installer from [python.org](https://www.python.org/downloads/). To ensure you can run Python files (including the pyControl GUI) by double clicking on them, select the options 'Add Python to PATH', 'Add Python to environment variables', and 'Associate files with Python' during installation.  Note; selecting these options when installing Python will cause the Python version you are installing to take precedence over any other version of Python installed on the computer, so may break previous Python based workflows on the computer.
+
+Once you have a working Python 3 installation on the computer, run the windows command prompt (cmd.exe) as an administrator and enter the following commands to install the required packages:
 
 ```
-conda update conda
-conda install -c anaconda pyserial
-conda install -c anaconda numpy
-conda install -c anaconda pyqtgraph
+python -m pip install numpy
+python -m pip install pyserial
+python -m pip install pyqt5
+python -m pip install pyqtgraph
 ```
+
+You should then be able to launch the GUI by double clicking the file *photometry_gui.py* in the folder *pyPhotometry/GUI*.
 
 pyPhotometry has been tested primarily on Windows 10 but in principle should be cross platform.  You may need to install the micropython USB drivers to ensure your operating system recognizes the board and can open a serial connection to it, see [micropython windows setup](http://micropython.org/resources/Micro-Python-Windows-setup.pdf) and the micropython [docs](http://docs.micropython.org/en/latest/pyboard/pyboard/tutorial/repl.html).  The micropython drivers are unsigned so to install them on Windows 10, follow the instructions [here](https://www.maketecheasier.com/install-unsigned-drivers-windows10/) under *Install Unsigned Drivers from Advanced Boot Menu*.  You should only need to do this the first time you install the drivers on a computer.
 
 ### Installation
 
-Download the latest version of pyPhotometry as a zip file from the repository's [downloads](https://bitbucket.org/takam/pyPhotometry/downloads/) page.
+Download the latest version of pyPhotometry as a zip file from the [releases](https://github.com/pyPhotometry/code/releases) page.
 
 Unzip the file and you will have the following folder structure:
 

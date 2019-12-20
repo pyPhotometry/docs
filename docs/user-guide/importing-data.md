@@ -10,7 +10,7 @@ The binary data files are more compact than the .csv files,  a 1 hour recording 
 
 ## Importing data
 
-If you are using Python for analysis you can import *.ppd* files using the `import_ppd` function in the [data_import](https://bitbucket.org/takam/pyphotometry/src/default/tools/data_import.py?at=default&fileviewer=file-view-default) module:
+If you are using Python for analysis you can import *.ppd* files using the `import_ppd` function in the [data_import](https://github.com/pyPhotometry/code/blob/master/tools/data_import.py) module:
 
 ```python
 from data_import import import_ppd
@@ -42,7 +42,7 @@ The `import_ppd` function returns a dictionary with the following entries:
 
 The `high_pass` and `low_pass` arguments provided to the `import_data` function determine the frequency in Hz of highpass and lowpass filtering applied to the filtered analog signals.  To disable highpass or lowpass filtering set the respective argument to `None`.   The filtering applies a 2nd order Butterworth filter in the forward and reverse directions to give a 4th order zero phase filter.
 
-If you are using Matlab for analysis you can import data with the function [import_ppd.m](https://bitbucket.org/takam/pyphotometry/src/default/tools/import_ppd.m?at=default&fileviewer=file-view-default) in the tools folder:
+If you are using Matlab for analysis you can import data with the function [import_ppd.m](https://github.com/pyPhotometry/code/blob/master/tools/import_ppd.m) in the tools folder:
 
 ```matlab
 data = import_ppd('path\\to\\data_file.ppd')
