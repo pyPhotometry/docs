@@ -82,7 +82,7 @@ The plot panels display data during acquisition.  The plots can be resized by dr
 
 ### Analog signal
 
-Scrolling plot displaying the analog signals.
+Scrolling plot displaying the analog signals.  Ticking the checkbox *'De-mean plotted signals'* subtracts the average value from each signal before plotting, making it easier to visualise both signals when they have different baseline levels (this does not affect the data saved).  You can then use the 'Offset channels' control to adjust the relative Y position of the de-meaned signals.
 
 ---
 
@@ -94,4 +94,4 @@ Scrolling plot displaying the digital signals.
 
 ### Event triggered
 
-An event triggered average of analog signal 1 triggered on rising edges of digital signal 1. The average is recency weighted with an exponential decay of time constant 5 events.
+An event triggered average of analog signal 1 triggered on rising edges of digital signal 1. The average is recency weighted using an exponential decay with time constant 5 events.
