@@ -44,7 +44,7 @@ Time division illumination means that crosstalk between the two signals is deter
 
 Baseline subtraction makes the signals insensitive to bleed-through of ambient light, and reduces the influence of low frequency noise sources similarly to lock in amplification.  
 
-Due to these advantages this aquisition mode is recommended over continuous illumination for two colour measurements.  For more information about time division illumination see the pyPhotometry [manuscript](https://www.biorxiv.org/content/early/2018/10/03/434225).
+Due to these advantages this aquisition mode is recommended over continuous illumination for two colour measurements.  For more information about time division illumination see the pyPhotometry [manuscript](https://rdcu.be/bpvvJ).
 
 Baseline subtraction changes the appearence of high frequency noise, as noise present when the baseline sample is read is subtracted from noise when the signal sample is read.  If you need to de-noise a setup (high gain amplifiers in photoreceivers can pick up electrical noise from nearby equipment) it is  recomended to use *2 colour continuous* mode to get a clear picture of the noise.
 
