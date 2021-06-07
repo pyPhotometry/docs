@@ -61,3 +61,29 @@ Connect the photorecivers to the acquisition board analog inputs using the 30cm 
 Connect the LEDs to the acquisition board LED outputs using their built in cables.  It is not necessary to connect the power supplies for the LED cooling fans as the maximum current output by the acquisition board is only 10% of the LEDs rated current.
 
 Connect the pigtailed rotary joint to the sample port of the minicube and connect the fiber patchcord to the rotary joint using the FC-FC adapter.
+
+# Modifying the pyPhotometry board for higher LED current
+
+The LED drivers on the standard pyPhotometry board can output up to 100mA currents.  While this is fine for many applications, higher LED currently may be preferable in some cases - e.g. with constructs that need higher light intensities or use wavelengths where only less efficient LEDs are available.  
+
+We plan to release a version of the board with higher maximum LED current, but have also looked into the possibility of increasing the maximum LED current that can be output from the standard board.  With a simple modification to the board - changing one resistor value per LED driver, it is possible to increase the maximum current that can be used in the time-division illumination modes up to 400mA.  **Modifiying the board risks damaging it and is done entierly at users risk**.
+
+The schematic of the LED driver circuit is shown below.  The current through the LED is controlled by the MOSFET (labled Q1), whose reistance is determined by the voltage applied to its gate by the opamp (IC1). The opamp adjusts the  gate voltage, and hence LED current, to bring the voltage across the sense resistor (R5) into agreement with the voltage at the + input to the opamp, which is controlled by the pyboard DAC (connected to wire CTRL1).
+
+![LED driver schematic](../media/LED_driver_schematic.png)
+
+The upshot of this is that the LED current is proportional to the control voltage output by the pyboard DAC, with a slope determined by the value of the sense resistor R5.  If you halve the value of the sense resistor R5, the LED current for a given control voltage will be doubled.
+
+The maximum current that can safely be output is limited by power dissipation in the MOSFET and sense resistor.  LEDs typically have a forward voltage of 1.8-3.3V depending on the LED wavelength and current.  The supply voltage is 5V, and the remaining voltage drop will occur across the MOSFET and sense resistor, dissipating power as heat.  Higher LED currents result in more power dissipation and hence more heating, putting an upper limit on the current that can be delivered without damaging these components.
+
+This is approximagely 200mA continuous current, but will depend a bit on the exact LED used, so limiting max currents to 100mA is recomended in continous mode.  However, in the time division illumination modes, each LED is only on for a small fraction of the time, hence both average current and power dissipation are much lower, and higher LED on currents are possible - we suggest 400mA as an upper limit.
+
+To modify the system to use higher currents you would need to replace the 4.7Ω sense resistors R5 and R6 (for LEDs 1 and 2 respectively), circled in yellow on the diagram below with a 1.2Ω 0805 package resistor, e.g. Farnell part number 1717800.
+
+![Sense resistors](../media/sense_resistors.png)
+
+Changing the resistor values from 4.7 to 1.2Ω without modifying the code will result in the actual LED currents being 3.9x higher than those specified in the GUI and data files.  
+ 
+To modify the code so that the LED currents are specified correctly, you would need to change the slope of the  `LED_calibration` variable defined at line 16 in [upy/photometry_upy.py](https://github.com/pyPhotometry/code/blob/master/uPy/photometry_upy.py) from its default value of 38.15 to 9.78.  You also need to modify the maxium LED current that can be set in the GUI from the default 100mA to 400mA, by changing lines 119 and 120 in [GUI/GUI_main.py](https://github.com/pyPhotometry/code/blob/master/GUI/GUI_main.py) where the range of the current controls is set.  These changes should be done on the latest version of the code currently on github, as earlier versions (including the last official release v0.3), use a single byte to send LED current commands to the board during acqusition so can't handle LED current values above 256mA.  
+
+Ideally the code should be modified to only allow currents above 100mA to be used in time-division but not continuous mode. This is beyond the scope of this document, but something we plan to implement in a future release.
