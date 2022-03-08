@@ -29,19 +29,19 @@ The LED driver circuits are voltage controlled current sinks in which an op amp 
 **Acquisition board**
 
 The acquisition board can be purchased from the [Open Ephys store](http://www.open-ephys.org/pycontrol) for €350 or built from components.  The design files for the acquitition board are in the [hardware repository](https://github.com/pyPhotometry/hardware). To assemble the board from components you will need to get the PCB printed (using either the Gerber or Eagle files) and order the electronic components listed in the BOM (Farnell part numbers are provided).
- 
+
 Assembling the acquisition board requires both surface mount and through hole soldering.  The surface mount soldering can be done either using a reflow oven or hand soldering.  Hand soldering of surface mount components requires a bit of practice but there are lots of [tutorials](https://www.google.co.uk/search?q=surface+mount+soldering+tutorial) online.  Solder all the surface mount components before soldering the through hole components as once the through hole components are in place they will get in the way.  The micropython board is attached to the acqusition board using the male and female 16 way headers.  First solder the female headers onto the micropython board, then insert the male headers into the female headers, mount the micropython on the acquisition board and solder the male headers.
 
 **Optical components**
 
-To make a complete photometetry system the acquisition board needs to be paired with LEDs, photorecievers, filter cubes and other optical components.  A [parts list](../resources/optical-components.md) for a set of additional components that can be used with the aquisition board for green/red two colour experiments (e.g. GCaMP/TdTomato) is provided in the resources section of the docs, and as a Excel file in the hardware repository.
+To make a complete photometetry system the acquisition board needs to be paired with LEDs, photorecievers, filter cubes and other optical components.  Two [parts lists](../resources/optical-components.md) are provided in the resources sections of the docs for components that can be used with the acquisition board for green/red two colour experiments (e.g. GCaMP/TdTomato).  The first is that reported in the pyControl mauscript, the second is an updated one using newer components.
 
-If you plan to use the time-division multiplexed illumination mode, the maximum sampling rate that can be  achieved without crosstalk between the signals will depend on the bandwidth of the photoreievers.  We use [Newport 2151](https://www.newport.com/p/2151) photorecievers in DC coupled mode, which have a bandwidth of 0-750 Hz.
+If you plan to use the time-division multiplexed illumination mode, the maximum sampling rate that can be  achieved without crosstalk between the signals will depend on the bandwidth of the photoreievers.  We use [Newport 2151](https://www.newport.com/p/2151) photorecievers in DC coupled mode, which have a bandwidth of 0-750 Hz.  
 
-The optical components for the red/green system are positioned and connected as indicated below:
+The optical components for the original red/green system are positioned and connected as indicated below:
 
 ![pyPhotometry GUI](../media/optical_parts_diagram.jpg)
- 
+
  To assemble the system:
 
 Attach the minicube to the optical breadboard using the clamp (CL3/M) and 45mm M6 bolts.
@@ -83,7 +83,7 @@ To modify the system to use higher currents you would need to replace the 4.7Ω 
 ![Sense resistors](../media/sense_resistors.png)
 
 Changing the resistor values from 4.7 to 1.2Ω without modifying the code will result in the actual LED currents being 3.9x higher than those specified in the GUI and data files.  
- 
+
 To modify the code so that the LED currents are specified correctly, you would need to change the slope of the  `LED_calibration` variable defined at line 16 in [upy/photometry_upy.py](https://github.com/pyPhotometry/code/blob/master/uPy/photometry_upy.py) from its default value of 38.15 to 9.78.  You also need to modify the maxium LED current that can be set in the GUI from the default 100mA to 400mA, by changing lines 119 and 120 in [GUI/GUI_main.py](https://github.com/pyPhotometry/code/blob/master/GUI/GUI_main.py) where the range of the current controls is set.  These changes should be done on the latest version of the code currently on github, as earlier versions (including the last official release v0.3), use a single byte to send LED current commands to the board during acqusition so can't handle LED current values above 256mA.  
 
 Ideally the code should be modified to only allow currents above 100mA to be used in time-division but not continuous mode. This is beyond the scope of this document, but something we plan to implement in a future release.
