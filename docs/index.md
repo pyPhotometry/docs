@@ -54,11 +54,11 @@ Download the latest version of pyPhotometry as a zip file from the [releases](ht
 Unzip the file and you will have the following folder structure:
 
 ```
-- GUI               # Graphical user interface code.
-- uPY               # Code that runs on the Micropython Microcontroller.
-- tools             # Tools for importing pyPhotometry data.
-- data              # Default data directory.
-pyPhotometry_GUI.py # Python script to launch the GUI.
+- GUI                # Graphical user interface code.
+- uPY                # Code that runs on the Micropython Microcontroller.
+- tools              # Tools for importing pyPhotometry data.
+- data               # Default data directory.
+pyPhotometry_GUI.pyw # Python script to launch the GUI.
 
 ```
 
@@ -70,7 +70,7 @@ The acquisition board can be purchased from the [Open Ephys store](http://www.op
 
 Connect a pyPhotometry acquisition board to the computer with a USB cable.
 
-Load the GUI by running the file *pyPhotometry_gui.py*.
+Load the GUI by running the file *pyPhotometry_gui.pyw*.
 
 Select your aqusition board using the *Serial port* drop down menu and connect to the board with the connect button.
 

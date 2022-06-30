@@ -5,6 +5,7 @@ site_author: Thomas Akam
 
 theme:
     name: readthedocs
+    logo: logo.png
 
 repo_url: https://github.com/pyPhotometry/docs
 
@@ -22,4 +23,9 @@ nav:
     - Release Notes: about/release-notes.md
     - License: about/license.md
 
-copyright: Copyright &copy; 2018-2020 <a href="/release-notes/">Thomas Akam</a>.
+- Quick Links:
+    - Google group: https://groups.google.com/forum/#!forum/pycontrol
+    - GitHub repositories: https://github.com/pyPhotometry
+    - Manuscript:  https://www.nature.com/articles/s41598-019-39724-y
+
+copyright: Copyright &copy; 2018-2022 <a href="/release-notes/">Thomas Akam</a>.
