@@ -34,9 +34,9 @@ Assembling the acquisition board requires both surface mount and through hole so
 
 **Optical components**
 
-To make a complete photometetry system the acquisition board needs to be paired with LEDs, photorecievers, filter cubes and other optical components.  Two [parts lists](../resources/optical-components.md) are provided in the resources sections of the docs for components that can be used with the acquisition board for green/red two colour experiments (e.g. GCaMP/TdTomato).  The first is that reported in the pyControl mauscript, the second is an updated one using newer components.
+To make a complete photometetry system the acquisition board needs to be paired with LEDs, photorecievers,  and optical components.   The optical setup detailed in the original manuscript used a Doric minicube with seperate LEDs and photodetectors connected through optic fibers.   Since the  manuscript was published Doric have introduced minicubes with integrated LEDs and Photodetectors.  We have not tested these ourselves but they look like a simpler and more convenient solution which likely gives better signal quality.   [Parts lists](../resources/optical-components.md) are provided for both options in the resources sections of the docs. 
 
-If you plan to use the time-division multiplexed illumination mode, the maximum sampling rate that can be  achieved without crosstalk between the signals will depend on the bandwidth of the photoreievers.  We use [Newport 2151](https://www.newport.com/p/2151) photorecievers in DC coupled mode, which have a bandwidth of 0-750 Hz.  
+If you plan to use a different optical setup, make sure that the photoreceivers have a bandwidth of at least 0-750 Hz and output voltage compatible with the 0-3.3V range measured by the pyboard DACs.
 
 The optical components for the original red/green system are positioned and connected as indicated below:
 

@@ -1,3 +1,18 @@
+# Updated optical setup
+
+Since the pyPhotometry manuscript was published Doric have updated their line of Photometry equipment, introducing minicubes with integrated LEDs and Photodetectors.  We have not tested these ourselves but from the information online it looks like they are a simpler and more convenient solution than the original optical setup which likely also gives better signal quality.  Below is a list of components for a red/green two-color system using the updated components. 
+
+| Description                                       | Supplier | supplier part number                                        | Quanitity |
+| ------------------------------------------------- | -------- | ----------------------------------------------------------- | --------- |
+| Mini-cube with integrated LEDs and photodetectors | Doric    | ilFMC5-G2_E1(460-490)_F1(500-540)_E2(555-570)_F2(580-680)_S | 1         |
+| Pigtailed fiber optic rotary joint                | Doric    | FRJ_1x1_PT_200-0.57_1m_FCM_0.15m_FCM                        | 1         |
+| Rotary joint holder                               | Doric    | Holder_FRJ_Small                                            | 1         |
+| FC_FC adapter                                     | Doric    | ADAPTER_FC                                                  | 1         |
+| Fiber patch cord 1m  (rotary to sample)           | Doric    | MFP_200/230/900-0.57_1m_FC-MF1.25(F)_LAF                    | 1         |
+| pyPhotometry board                                | OEPS     | pyPhotometry                                                | 1         |
+| BNC cable 1m                                      | Farnell  | 2911072                                                     | 2         |
+| M8 cable for LEDs 1m                              | Farnell  | 3238565                                                     | 2         |
+
 # Original optical setup
 
 The table below lists the set of components reported in the original pyPhotometry manuscript, that can be used with the acquisition board for red/green two colour photometry experiments.
@@ -26,19 +41,4 @@ For assembly instructions see the [hardware user guide](../user-guide/hardware.m
 | M3 screw   10mm                                      | 4        | 660-4636                                               | RS       |
 | M3   spacer 3mm                                      | 4        | 161-3676                                               | RS       |
 | M6 x   45mm                                          | 2        | 468-0133                                               | RS       |
-
-# Updated optical setup
-
-Since the pyPhotometry manuscript was published Doric have updated their line of Photometry equipment, introducing minicubes with integrated LEDs and Photodetectors.  We have not tested these ourselves but from the information online it looks like they are a simpler and more convenient solution than the original optical setup which likely also gives better signal quality.  Below is a list of components for a red/green two-color system using the updated components. 
-
-| Description                                                  | Supplier | supplier part number                                        | Quanitity  |
-| ------------------------------------------------------------ | -------- | ----------------------------------------------------------- | ---------- |
-| Mini-cube with integrated LEDs and photodetectors            | Doric    | ilFMC5-G2_E1(460-490)_F1(500-540)_E2(555-570)_F2(580-680)_S | 1          |
-| Pigtailed fiber optic rotary joint                           | Doric    | FRJ_1x1_PT_200-0.57_1m_FCM_0.15m_FCM                        | 1          |
-| Rotary joint holder                                          | Doric    | Holder_FRJ_Small                                            | 1          |
-| FC_FC adapter                                                | Doric    | ADAPTER_FC                                                  | 1          |
-| Fiber patch cord 1m  (rotary to sample)                      | Doric    | MFP_200/230/900-0.57_1m_FC-MF1.25(F)_LAF                    | 1          |
-| pyPhotometry board                                           | OEPS     | pyPhotometry                                                | 1          |
-| BNC cable 1m                                                 | Farnell  | 2911072                                                     | 2          |
-| M8 cable for LEDs 1m                                         | Farnell  | 3238565                                                     | 2          |
 
