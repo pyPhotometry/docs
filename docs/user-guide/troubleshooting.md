@@ -1,6 +1,6 @@
 # Troubleshooting
 
-The page details how to fix common problems that can occur when using pyPhotometry.  If you encounter a problem that is not covered on this page, please contact the [google group](https://groups.google.com/forum/#!forum/pycontrol).
+The page details how to fix common problems that can occur when using pyPhotometry.  If you encounter a problem that is not covered on this page, please post on the [discussion board](https://github.com/orgs/pyPhotometry/discussions).
 
 ### Can't open GUI
 
