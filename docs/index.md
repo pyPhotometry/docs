@@ -29,7 +29,7 @@ pyPhotometry has the following dependencies:
 - Python 3
 - pyserial
 - numpy
-- pyqt5
+- pyqt6
 - pyqtgraph
 
  On a windows machine that does not already have Python installed, the simplest way to install Python is to download an installer from [python.org](https://www.python.org/downloads/). To ensure you can run Python files (including the pyControl GUI) by double clicking on them, select the options 'Add Python to PATH', 'Add Python to environment variables', and 'Associate files with Python' during installation.  Note; selecting these options when installing Python will cause the Python version you are installing to take precedence over any other version of Python installed on the computer, so may break previous Python based workflows on the computer.
@@ -39,7 +39,7 @@ Once you have a working Python 3 installation on the computer, run the windows c
 ```
 python -m pip install numpy
 python -m pip install pyserial
-python -m pip install pyqt5
+python -m pip install pyqt6
 python -m pip install pyqtgraph
 ```
 
