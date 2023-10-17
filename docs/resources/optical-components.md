@@ -10,8 +10,8 @@ Since the pyPhotometry manuscript was published Doric have updated their line of
 | FC_FC adapter                                     | Doric    | ADAPTER_FC                                                  | 1         |
 | Fiber patch cord 1m  (rotary to sample)           | Doric    | MFP_200/230/900-0.57_1m_FC-MF1.25(F)_LAF                    | 1         |
 | pyPhotometry board                                | OEPS     | pyPhotometry                                                | 1         |
-| BNC cable 1m                                      | Farnell  | 2911072                                                     | 2         |
-| M8 cable for LEDs 1m                              | Farnell  | 3238565                                                     | 2         |
+| BNC cable for photodetectors 1m                   | RS       | 122-2148                                                    | 2         |
+| M8 cable for LEDs 1m                              | RS       | 224-3380                                                    | 2         |
 
 # Original optical setup
 
