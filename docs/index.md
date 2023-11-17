@@ -47,36 +47,37 @@ pyPhotometry has been tested primarily on Windows 10 but in principle should be 
 
 ### Installation
 
-Download the latest version of pyPhotometry as a zip file from the [releases](https://github.com/pyPhotometry/code/releases) page.
+Get the latest version of pyPhotometry, either by downloading it at a zip file from the [releases](https://github.com/pyPhotometry/code/releases) page or by cloning the [code repository](https://github.com/pyPhotometry/code) to your computer with Git.  Cloning the repository is recommended as it makes it easier to update pyControl in the future.  pyPhotometry is in active development with new versions released from time to time.  The default documentation is for the latest release, but the dropdown menu in the bottom right corner of the docs lets you access documentation for earlier versions, and for the *dev* branch of the code repository where new features are developed.  
 
-Unzip the file and you will have the following folder structure:
+Either way you obtain the code, you will have the following folder structure:
 
 ```
 - GUI                # Graphical user interface code.
 - uPY                # Code that runs on the Micropython Microcontroller.
 - tools              # Tools for importing pyPhotometry data.
 - data               # Default data directory.
+- experiments        # Where experiment configurations are saved.
 pyPhotometry_GUI.pyw # Python script to launch the GUI.
 
 ```
 
 ### Hardware
 
-The acquisition board can be purchased from the [Open Ephys store](http://www.open-ephys.org/pycontrol) for €350 or built from components.  Assembly instructions for a red/green photometry system are provided in the [hardware user guide](user-guide/hardware.md#assembly-instructions).
+The acquisition board can be purchased from the [Open Ephys store](http://www.open-ephys.org/pycontrol) for €364 or built from components.  Assembly instructions for a red/green photometry system are provided in the [hardware user guide](user-guide/hardware.md#assembly-instructions).
 
 ### Running an experiment
 
-Connect a pyPhotometry acquisition board to the computer with a USB cable.
-
 Load the GUI by running the file *pyPhotometry_gui.pyw*.
 
-Select your aqusition board using the *Serial port* drop down menu and connect to the board with the connect button.
+Select the *Setups* tab, then connect a pyPhotometry acquisition board to the computer with a USB cable. You should see the board show up in the table on the setups tab.  You can give the setup a name which will determine how it appears in the GUI.
+
+Select the *Acquisition* tab, you should see the name of your setup in the drop down menu next to the *Connect* button.  Press the *Connect* button to connect to the board.
 
 Select the data acquisition mode, for more information see the [GUI user guide](user-guide/graphical-user-interface.md#acquisition-settings).
 
 Press *Start* to start data acquisition.
 
-Adjust the LED currents (and photoreciever gain if applicable) to bring the signals into the center of the 0 - 3.3V range covered by the analog inputs.  Signals that exceed 3.3V it will be clipped.  If the signal is very low the signal to noise ratio will be less good.  When adjusting the LED current it is recommended to use the 'two colour continous' acquisition mode as this mode does not use baseline subtraction so the signal you see is the raw photoreciever voltage.
+Adjust the LED currents (and photoreciever gain if applicable) to bring the signals into the center of the 0 - 3.3V range covered by the analog inputs.  Signals that exceed 3.3V it will be clipped.  If the signal is very low the signal to noise ratio will be less good.  When adjusting the LED current it is recommended to use the `2EX_2EM_continuous` acquisition mode as this mode does not use baseline subtraction so the signal you see is the raw photoreciever voltage.
 
 To record data enter a subject ID and data directory and press *Record*.
 
@@ -88,9 +89,9 @@ If you encounter problems take a look at the [troubleshooting](user-guide/troubl
 
 If you are new to pyPhotometry, we recomend doing the following steps to build understanding of the signals, and test your optical setup is working as expected.
 
-1.  Put the system in 'Two colour continuous' mode and wave the fiber tip around, you should see the signal levels go up and down as the tip is oriented towards and away from light sources in the room.
+1.  Put the system in `2EX_2EM_continuous` mode and wave the fiber tip around, you should see the signal levels go up and down as the tip is oriented towards and away from light sources in the room.
 
-2.  Put the system in 'One colour time division' or  'Two colour time division' mode, depending on your whether you are using one or two phototdetectors.  These modes use background subtraction, i.e. they subtract the signal level with the LED off from the value with the LED on, to remove the influence of background illumination.  Therefore when you move the tip around the signal should stay constant (though if you point the fiber tip at a bright light, the background subtracted signal may drop to zero due to the raw signal saturating). 
+2.  Put the system in `2EX_1EM_pulsed` or  `2EX_2EM_pulsed` mode, depending on your whether you are using one or two phototdetectors.  These modes use background subtraction, i.e. they subtract the signal level with the LED off from the value with the LED on, to remove the influence of background illumination.  Therefore when you move the tip around the signal should stay constant (though if you point the fiber tip at a bright light, the background subtracted signal may drop to zero due to the raw signal saturating). 
 
 3.  Even using background subtraction, and with nothing in front of the patch cord, the signal will not be zero due to autofluorescence from the patch cords themselves.  The brightness of the autofluorescence depends on the illumination intensity and wavelength (shorter wavelengths typically evoke more autofluorescence).  Increase and decreace the LED currents and check that the corresponding signal levels change.
 

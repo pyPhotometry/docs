@@ -29,6 +29,7 @@ The `import_ppd` function returns a dictionary with the following entries:
 'version'       # Version number of pyPhotometry
 'analog_1'      # Raw analog signal 1 (volts)
 'analog_2'      # Raw analog signal 2 (volts)
+'analog_3'      # Raw analog signal 3 (if present) (volts)
 'analog_1_filt' # Filtered analog signal 1 (volts)
 'analog_2_filt' # Filtered analog signal 2 (volts)
 'digital_1'     # Digital signal 1
@@ -51,7 +52,22 @@ The Matlab import function returns a struct with the same fields as the dictiona
 
 ## Data preprocessing
 
-Photometry data typically needs preprocessing to remove noise, and correct for photobleaching and movement artifacts.  Some photometry data preprocessing methods are shown in this [notebook](https://github.com/ThomasAkam/photometry_preprocessing/blob/master/Photometry%20data%20preprocessing.ipynb).
+Photometry data typically needs preprocessing to remove noise, and correct for photobleaching and movement artifacts.  Some photometry data preprocessing methods are shown in this [notebook](https://github.com/ThomasAkam/photometry_preprocessing/blob/master/Photometry%20data%20preprocessing.ipynb). A Python function implementing the preprocessing method shown in the notebook is provided in the data import module.  To use it do:
+
+```python
+from data_import import import_ppd, preprocess_data
+
+data = import_ppd('path\\to\\data_file.ppd')
+
+processed_signal = preprocess_data(data_dict=data, 
+                                   signal="analog_1", 
+                                   control="analog_2", 
+                                   low_pass=10,
+                                   normalisation="dF/F",
+                                   plot=True)
+```
+
+For more information see the function docstring.
 
 ## Binary data format
 

@@ -12,8 +12,8 @@ If the GUI does not open this is probably because you do not have the required [
 
 If no pyboards that you connect to the computer show up in the GUI's board select dropdown menu, the problem may be caused by the computers operating system langauge being set to something other than English.  This changes the name that pyboards are given in the computers list of connected serial devices, which is used by the GUI to identify connected boards.  There are two possible ways to fix this problem:
 
-- Use the Micropython USB drivers rather than the generic windows USB serial device drivers.  This should ensure that pyboards are listed by the computers operating system as *Pyboard* irrespective of the operating system language.  Information on how to install the Micropython USB drivers is provided below in section *How to install the Micropython USB drivers*.
-#
+- Use the Micropython USB drivers rather than the generic windows USB serial device drivers.  This should ensure that pyboards are listed by the computers operating system as *Pyboard* irrespective of the operating system language.  Information on how to install the Micropython USB drivers is provided below in section *How to install Micropython USB drivers*.
+
 - Alternatively, change the computers operating system language to English.
 
 ### Can't connect to acquisition board.
@@ -22,7 +22,11 @@ If the GUI status says 'Connection Failed' when you try to connect to the acquis
 
 If you still cannot connect to the board, try resetting the pyboard filesystem by following the instructions [here](https://docs.micropython.org/en/latest/pyboard/tutorial/reset.html#factory-reset-the-filesystem).
 
-### How to install the Micropython USB drivers
+### GUI freezes during acquisition
+
+When aquiring data from many boards in parallel you may need to reduce the frequency with which GUI plots are updated by increasing the `update_interval` variable in *config/GUI_config.py* to avoid overloading the CPU.
+
+### How to install Micropython USB drivers
 
 By default windows will use generic USB serial device drivers for connected pyboards.  Normally this works fine, but if you are having reliability problems, or the GUI is not recognising connected pyboards due the computers operating system langage being set to something other than English (see above), it is recommended to use the Micropython USB drivers.  
 
