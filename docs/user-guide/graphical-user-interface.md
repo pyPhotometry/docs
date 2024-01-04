@@ -14,7 +14,7 @@ The config control box is used to specify the number of setups, and to load and 
 
 ### Acquisition settings
 
-The *mode* dropdown menu is used to select the acqusition mode.  Acquisition modes have been renamed in pyPhotometry v1.0 as the old names, e.g. `1 colour time division` refered only to the number of emission wavelengths, not excitation wavelengths, which would have caused ambiguity with the addition of a new acquisition mode in this release.  The acqusisition mode names specify the number of excitation wavlengths (i.e. LEDs) and emission wavelengths (i.e. photorecievers) used, and whether the LEDs are on continuously or pulsed for time-division multiplexed illumination, so e.g. the `2EX_2EM_pulsed` mode uses two LEDs, two photorecievers, and pulsed illumination.
+The *mode* dropdown menu is used to select the acqusition mode.  Acquisition modes have been renamed in pyPhotometry v1.0 as the old names, e.g. `1 colour time division` refered only to the number of emission wavelengths, not excitation wavelengths, which would have caused ambiguity with the addition of a new acquisition mode in this release.  The acquisition mode names specify the number of excitation wavlengths (i.e. LEDs) and emission wavelengths (i.e. photorecievers) used, and whether the LEDs are on continuously or pulsed for time-division multiplexed illumination, so e.g. the `2EX_2EM_pulsed` mode uses two LEDs, two photorecievers, and pulsed illumination.
 
 The correspondence between the new and old names is:
 
@@ -27,7 +27,7 @@ The correspondence between the new and old names is:
 
 #### Acquisition modes 
 
-`2EX_2EM_continuous` Signals are aquired from two photorecievers (analog inputs 1 and 2) with both LEDs on continuously during aquisition.
+`2EX_2EM_continuous` Signals are aquired from two photorecievers (analog inputs 1 and 2) with both LEDs on continuously during aquisition.  This mode is useful for troubleshooting as the plotted signals are the raw photoreciever voltages without baseline subtraction (see below), but is not recomended for acquiring data.
 
 `2EX_2EM_pulsed` Signals are aquired from two photorecievers (analog inputs 1 and 2) using time division illumination and baseline subtraction. The acqusition sequence is:
 
@@ -61,7 +61,7 @@ Specifies the directory where data files will be saved and the data file type.  
 
 ### Control all
 
-The *Control all* box is used to *connect/start/stop/record* all the connected setups.  Select the command from the drop-down menu then press the button to execute it on all setups.  The box is only active when all setups are in the same state.
+The *Control all* box is used to control multiple setups simultaneously.  Select the command (*connect/start/stop/record*) from the drop-down menu then press the button to execute it on all setups.  The box is only active when all setups are in the same state.
 
 ### Individual setup controls
 
@@ -73,15 +73,23 @@ Each  setup has a set of controls that apply only to that setup, located above i
 
 - Text box to specify the subject ID.
 
-- Controls for channel 1 and 2 LED current.
+- LED current controls for channel 1 and 2.
 
 - Buttons to start data acqusition, record data to disk, and stop acqusition.
 
 The second row are plotting controls:
 
 - Set the plot's Y range to the *Full* 0 - 3.3 Volt range, *Auto*-scale the range to the current data, or increase/decrease the Y scale.
-- Ticking the *'De-mean plotted signals'* checkbox subtracts the average value from each signal before plotting, making it easier to visualise both signals when they have different baseline levels (this does not affect the data saved).  You can use the 'Offset channels' control to adjust the relative Y position of the de-meaned signals.
+- Tick the *'De-mean plotted signals'* checkbox to subtract the average value from each signal before plotting, making it easier to visualise both signals when they have different baseline levels (this does not affect the data saved).  You can use the 'Offset channels' control to adjust the relative Y position of the de-meaned signals.
 - The *Show event triggered plot* checkbox controls whether the event triggered plot is shown.  By default it is shown when using a single setup but hidden when using more than one setup to save screen space.
+
+### Keyboard shortcuts
+
+`Ctrl+A` Autoscale all plots Y range to the current data.
+
+`Ctrl+F` Set all plots to the full 0-3.3V Y range.
+
+`Ctrl+D` Toggle *'De-mean plotted signals'* for all plots.
 
 ### Plots
 
@@ -91,12 +99,12 @@ The event triggered plot shows an event triggered average of signal 1, triggered
 
 ### Default settings
 
-The acquisition mode, LED currents and file type that are selected by default when the GUI is opened can be specified by editing the file *pyPhotometry/GUI/config.py*.  You can also specify which acqusition modes are availible for selection in the drop-down menu, and how often plots are updated during acqusition.  Decreasing the update frequency may be necessary if the GUI is unstable when recording from many setups simultaneously.
+The acquisition mode, LED currents and file type that are selected by default when the GUI is opened can be specified by editing the file *pyPhotometry/config/GUI_config.py*.  You can also specify which acqusition modes are availible for selection in the drop-down menu, and how often plots are updated during acqusition.  Increasing the `update_interval` may be necessary if the GUI freezes when recording from many setups simultaneously.
 
 ## Setups tab
 
 ![pyPhotometry GUI](../media/setups_tab.png)
 
-The setups tab is used to name and configure setups. A setups name determines how it appears in board select drop-down menus on the acquisition tab.  If no name is specified, the serial port is used to identify the setup in the board select menu. If you have pyboards connected to the computer that are not pyPhotometry setups, e.g. [pyControl](https://pycontrol.readthedocs.io) behavioural setups, you can prevent them from appearing in the board select drop down menu by naming them `_hidden_`.  
+The setups tab is used to name and configure setups. A setup's name determines how it appears in board select drop-down menus on the acquisition tab.  If no name is specified, the serial port is used to identify the setup in the board select menu. If you have pyboards connected to the computer that are not pyPhotometry setups, e.g. [pyControl](https://pycontrol.readthedocs.io) behavioural setups, you can prevent them from appearing in the board select drop down menu by naming them `_hidden_`.  
 
 By default pyboards appear as a USB flashdrive on the computer filesystem.  You can disable this using the Flashdrive enable/disable button by each setup.  This does not affect the boards use by pyPhotometry, but can be useful to avoid having lots of flashdrives showing on the computer.

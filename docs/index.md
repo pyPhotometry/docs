@@ -52,6 +52,7 @@ Get the latest version of pyPhotometry, either by downloading it at a zip file f
 Either way you obtain the code, you will have the following folder structure:
 
 ```
+- config             # Configuration files
 - GUI                # Graphical user interface code.
 - uPY                # Code that runs on the Micropython Microcontroller.
 - tools              # Tools for importing pyPhotometry data.
@@ -91,7 +92,7 @@ If you are new to pyPhotometry, we recomend doing the following steps to build u
 
 1.  Put the system in `2EX_2EM_continuous` mode and wave the fiber tip around, you should see the signal levels go up and down as the tip is oriented towards and away from light sources in the room.
 
-2.  Put the system in `2EX_1EM_pulsed` or  `2EX_2EM_pulsed` mode, depending on your whether you are using one or two phototdetectors.  These modes use background subtraction, i.e. they subtract the signal level with the LED off from the value with the LED on, to remove the influence of background illumination.  Therefore when you move the tip around the signal should stay constant (though if you point the fiber tip at a bright light, the background subtracted signal may drop to zero due to the raw signal saturating). 
+2.  Put the system in `2EX_1EM_pulsed` or  `2EX_2EM_pulsed` mode, depending on your whether you are using one or two photodetectors.  These modes use background subtraction, i.e. they subtract the signal level with the LED off from the value with the LED on, to remove the influence of background illumination.  Therefore when you move the tip around the signal should stay constant (though if you point the fiber tip at a bright light, the background subtracted signal may drop to zero due to the raw signal saturating). 
 
 3.  Even using background subtraction, and with nothing in front of the patch cord, the signal will not be zero due to autofluorescence from the patch cords themselves.  The brightness of the autofluorescence depends on the illumination intensity and wavelength (shorter wavelengths typically evoke more autofluorescence).  Increase and decreace the LED currents and check that the corresponding signal levels change.
 

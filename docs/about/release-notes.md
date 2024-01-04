@@ -6,9 +6,25 @@
 
 * [Thomas Akam](https://github.com/ThomasAkam) thomas.akam@psy.ox.ac.uk
 
---- 
-
 ## Change log
+
+### Version 1.0 (2024-01-04)
+
+- GUI now supports acquisition from multiple setups in parallel.
+
+- GUI now supports saving and loading experiment configurations.
+
+- New 'Setups' tab supports naming setups, hiding pyboards that are not pyPhotometry setups, and disabling pyboard flash drives.
+
+- New 3 channel time division acqusition mode.
+
+- Digital input pulses are now overlaid on analog signal plot not plotted seperately.
+
+- Keyboard shortcuts to auto- and full-range plot Y scale and toggle demean mode.
+
+- preprocess_data function added to data import module.
+
+--- 
 
 ### Version 0.3.3 (2023-07-28)
 
