@@ -2,9 +2,19 @@
 
 Since the pyPhotometry manuscript was published Doric have updated their line of Photometry equipment, introducing minicubes with integrated LEDs and Photodetectors.  We have not tested these ourselves but from the information online it looks like they are a simpler and more convenient solution than the original optical setup which likely also gives better signal quality.  Below is a list of components for a red/green two-color system using the updated components. 
 
+!!! warning "Compatibility"
+
+    If you plan to use different optical components from those listed below please check the following features of the hardware to ensure compatibility:
+
+    - **Output voltage:**  The pyPhotometry board analog inputs can read voltages from 0 to 3.3V, so will not work with photorecievers with AC coupled outputs which generate signals that go below 0V.
+
+    - **Signal bandwidth:**  The pulsed illumination modes of the pyPhotometry system require a signal bandwidth of at least 0-750Hz to work correctly. Photorecievers with a smaller signal bandwidth will cause the signals to respond to changes in light intensity too slowly to work with the pulsed illumination modes.
+
+    - **LEDs:**  The LED outputs on the pyPhotometry board are constant current LED drivers that should be connected directly to LEDs, not to the control input of an LED driver.  **The pyPhotometry board is therefore not compatible with systems such as the Generation 3 Doric minicubes which have built in LED drivers.**
+
 | Description                                       | Supplier | supplier part number                                        | Quanitity |
 | ------------------------------------------------- | -------- | ----------------------------------------------------------- | --------- |
-| Mini-cube with integrated LEDs and photodetectors | Doric    | ilFMC5-G2_E1(460-490)_F1(500-540)_E2(555-570)_F2(580-680)_S | 1         |
+| Generation 2 Doric Mini-cube with integrated LEDs and photodetectors | Doric    | ilFMC5-G2_E1(460-490)_F1(500-540)_E2(555-570)_F2(580-680)_S | 1         |
 | Pigtailed fiber optic rotary joint                | Doric    | FRJ_1x1_PT_200-0.57_1m_FCM_0.15m_FCM                        | 1         |
 | Rotary joint holder                               | Doric    | Holder_FRJ_Small                                            | 1         |
 | FC_FC adapter                                     | Doric    | ADAPTER_FC                                                  | 1         |

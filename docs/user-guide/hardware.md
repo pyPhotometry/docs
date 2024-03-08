@@ -36,7 +36,16 @@ Assembling the acquisition board requires both surface mount and through hole so
 
 To make a complete photometetry system the acquisition board needs to be paired with LEDs, photorecievers,  and optical components.   The optical setup detailed in the original manuscript used a Doric minicube with seperate LEDs and photodetectors connected through optic fibers.   Since the  manuscript was published Doric have introduced minicubes with integrated LEDs and Photodetectors.  We have not tested these ourselves but they look like a simpler and more convenient solution which likely gives better signal quality.   [Parts lists](../resources/optical-components.md) are provided for both options in the resources sections of the docs. 
 
-If you plan to use a different optical setup, make sure that the photoreceivers have a bandwidth of at least 0-750 Hz and output voltage compatible with the 0-3.3V range measured by the pyboard DACs.
+!!! warning "Compatibility"
+
+    If you plan to use different optical components from those listed in the [Parts lists](../resources/optical-components.md) please check the following features of the hardware to ensure compatibility:
+
+    - **Output voltage:**  The pyPhotometry board analog inputs can read voltages from 0 to 3.3V, so will not work with photorecievers with AC coupled outputs which generate signals that go below 0V.
+
+    - **Signal bandwidth:**  The pulsed illumination modes of the pyPhotometry system require a signal bandwidth of at least 0-750Hz to work correctly. Photorecievers with a smaller signal bandwidth will cause the signals to respond to changes in light intensity too slowly to work with the pulsed illumination modes.
+
+    - **LEDs:**  The LED outputs on the pyPhotometry board are constant current LED drivers that should be connected directly to LEDs, not to the control input of an LED driver.  **The pyPhotometry board is therefore not compatible with systems such as the Generation 3 Doric minicubes which have built in LED drivers.**
+
 
 The optical components for the original red/green system are positioned and connected as indicated below:
 
