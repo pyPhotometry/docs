@@ -4,13 +4,13 @@
 
 ---
 
-![Acquisition board](media/board_photo.jpg)
+![Acquisition board](media/board_photo.png)
 
 ## Overview
 
 pyPhotometry is system of open source hardware and software for neuroscience fiber photometry data acquisition, consisting of an [acquisition board](user-guide/hardware.md) and [graphical user interface](user-guide/graphical-user-interface.md). 
 
-pyPhotometry supports data aquisition from two analog and two digital inputs, and control of two LEDs via built in LED drivers with an adjustable 0-100mA output.  The system supports time-division multiplexed illumination which allows fluoresence evoked by different excitation wavelengths to be independenly readout from a single photoreciever signal.  Assembled acquisition boards are available from the [OpenEphys store](https://open-ephys.org/pycontrol/pyphotometry)
+pyPhotometry supports data aquisition from two analog and two digital inputs, and control of two LEDs via built in LED drivers with an adjustable 0-100mA output.  The system supports time-division multiplexed illumination which allows fluoresence evoked by different excitation wavelengths to be independenly readout from a single photoreciever signal.  Assembled acquisition boards are available from the [Open Ephys](https://open-ephys.org/pycontrol/oeps-8011) store and [Labmaker](https://www.labmaker.org/collections/neuroscience/products/pyphotometry-2-0).
 
 pyPhotometry hardware, software and documentation repositories are hosted on [GitHub](https://github.com/pyPhotometry), along with a [discussion board](https://github.com/orgs/pyPhotometry/discussions) for user support and questions.
 
@@ -18,7 +18,7 @@ The pyPhotometry [manuscript](https://rdcu.be/bpvvJ) has validation experiments 
 
 If your experiments involve behavioural tasks, you may be interested in pyPhotometry's sister project [pyControl](https://pycontrol.readthedocs.io), a Python based system for controlling behavioural experiments.
 
----  
+---
 
 ## Getting started
 

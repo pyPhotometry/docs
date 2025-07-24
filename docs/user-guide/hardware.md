@@ -1,6 +1,6 @@
 # Acquisition board
 
-![Acquisition board](../media/board_photo.jpg)
+![Acquisition board](../media/board_photo.png)
 
 The pyPhotometry acquisition board uses a [Micropython](https://micropython.org/) microcontroller to acquire two digital and two analog signals, and to generate analog control signals for two built in LED driver circuits.  The acquisition board draws power from the Micropython's USB connector and requires no additional power supply.
 
