@@ -10,7 +10,7 @@
 
 pyPhotometry is system of open source hardware and software for neuroscience fiber photometry data acquisition, consisting of an [acquisition board](user-guide/hardware.md) and [graphical user interface](user-guide/graphical-user-interface.md). 
 
-pyPhotometry supports data aquisition from two analog and two digital inputs, and control of two LEDs via built in LED drivers with an adjustable 0-100mA output.  The system supports time-division multiplexed illumination which allows fluoresence evoked by different excitation wavelengths to be independenly readout from a single photoreciever signal.  Assembled acquisition boards are available from the [Open Ephys](https://open-ephys.org/pycontrol/oeps-8011) store and [Labmaker](https://www.labmaker.org/collections/neuroscience/products/pyphotometry-2-0).
+pyPhotometry supports data acquisition from two analog and two digital inputs, and control of two LEDs via built in LED drivers with an adjustable 0-300mA output.  The system supports time-division multiplexed illumination which allows fluorescence evoked by different excitation wavelengths to be independently readout from a single photoreceiver signal.  Assembled acquisition boards are available from the [Open Ephys](https://open-ephys.org/pycontrol/oeps-8011) store and [Labmaker](https://www.labmaker.org/collections/neuroscience/products/pyphotometry-2-0).
 
 pyPhotometry hardware, software and documentation repositories are hosted on [GitHub](https://github.com/pyPhotometry), along with a [discussion board](https://github.com/orgs/pyPhotometry/discussions) for user support and questions.
 
@@ -64,13 +64,13 @@ pyPhotometry_GUI.pyw # Python script to launch the GUI.
 
 ### Hardware
 
-The acquisition board can be purchased from the [Open Ephys store](http://www.open-ephys.org/pycontrol) for €364 or built from components.  Assembly instructions for a red/green photometry system are provided in the [hardware user guide](user-guide/hardware.md#assembly-instructions).
+The acquisition board can be purchased from the [Open Ephys store](http://www.open-ephys.org/pycontrol) for €364 or built from components.  The acquisition board needs to be paired with additional optical components to make a complete system, see the [Optical Components](resources/optical-components.md) resources page for more information.
 
 ### Running an experiment
 
 Load the GUI by running the file *pyPhotometry_gui.pyw*.
 
-Select the *Setups* tab, then connect a pyPhotometry acquisition board to the computer with a USB cable. You should see the board show up in the table on the setups tab.  You can give the setup a name which will determine how it appears in the GUI.
+Select the *Setups* tab, then connect a pyPhotometry acquisition board to the computer with a USB cable. You should see the board show up in the table on the setups tab.  You can give the setup a name which will determine how it appears in the GUI, and select whether it is a v1.0 or v2.0 acquisition board (see [Hardware](user-guide/hardware)).
 
 Select the *Acquisition* tab, you should see the name of your setup in the drop down menu next to the *Connect* button.  Press the *Connect* button to connect to the board.
 
@@ -78,7 +78,7 @@ Select the data acquisition mode, for more information see the [GUI user guide](
 
 Press *Start* to start data acquisition.
 
-Adjust the LED currents (and photoreciever gain if applicable) to bring the signals into the center of the 0 - 3.3V range covered by the analog inputs.  Signals that exceed 3.3V it will be clipped.  If the signal is very low the signal to noise ratio will be less good.  When adjusting the LED current it is recommended to use the `2EX_2EM_continuous` acquisition mode as this mode does not use baseline subtraction so the signal you see is the raw photoreciever voltage.
+Adjust the LED currents (and photoreceiver gain if applicable) to bring the signals into the centre of the 0 - 3.3V range covered by the analog inputs.  If an input signal exceeds 3.3V it will be clipped, and a warning will be shown in the signal plot indicating which channel is clipping.  If the signal is very low the signal to noise ratio will be less good.  When adjusting the LED current it is recommended to use the `2EX_2EM_continuous` acquisition mode as this mode does not use baseline subtraction so the signal you see is the raw photoreceiver voltage.
 
 To record data enter a subject ID and data directory and press *Record*.
 
@@ -90,11 +90,11 @@ If you encounter problems take a look at the [troubleshooting](user-guide/troubl
 
 If you are new to pyPhotometry, we recomend doing the following steps to build understanding of the signals, and test your optical setup is working as expected.
 
-1.  Put the system in `2EX_2EM_continuous` mode and wave the fiber tip around, you should see the signal levels go up and down as the tip is oriented towards and away from light sources in the room.
+1.  Put the system in `2EX_2EM_continuous` mode and wave the fiber tip around, you should see the signal levels go up and down as the tip is oriented towards and away from light sources in the room.  If the light in the room is bright you may well see a warning indicating that the signal is clipping.
 
-2.  Put the system in `2EX_1EM_pulsed` or  `2EX_2EM_pulsed` mode, depending on your whether you are using one or two photodetectors.  These modes use background subtraction, i.e. they subtract the signal level with the LED off from the value with the LED on, to remove the influence of background illumination.  Therefore when you move the tip around the signal should stay constant (though if you point the fiber tip at a bright light, the background subtracted signal may drop to zero due to the raw signal saturating). 
+2.  Put the system in `2EX_1EM_pulsed` or  `2EX_2EM_pulsed` mode, depending on your whether you are using one or two photodetectors.  These modes use background subtraction, i.e. they subtract the signal level with the LED off from the value with the LED on, to remove the influence of background illumination.  Therefore when you move the tip around the signal should stay constant (though if you point the fiber tip at a bright light, the background subtracted signal may drop to zero due to the raw signal saturating, and the clipping warning will show). 
 
-3.  Even using background subtraction, and with nothing in front of the patch cord, the signal will not be zero due to autofluorescence from the patch cords themselves.  The brightness of the autofluorescence depends on the illumination intensity and wavelength (shorter wavelengths typically evoke more autofluorescence).  Increase and decreace the LED currents and check that the corresponding signal levels change.
+3.  Even using background subtraction, and with nothing in front of the patch cord, the signal will not be zero due to autofluorescence from the patch cords themselves.  The brightness of the autofluorescence depends on the illumination intensity and wavelength (shorter wavelengths typically evoke more autofluorescence).  Increase and decrease the LED currents and check that the corresponding signal levels change.  
 
 4.  Touch the tip of the patch cord onto a sheet of white paper, you should see the signal levels go up due to fluorescence of the paper. 
 

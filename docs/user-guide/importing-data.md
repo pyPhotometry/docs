@@ -6,9 +6,12 @@ Saving the data as a binary *.ppd* file generates a single file per recording wh
 
 Saving the data as a *.csv* file generates two files per recording; a *.csv* file containing the data and a *.json* file containing the acquisition settings.
 
-The binary data files are more compact than the .csv files,  a 1 hour recording at 130Hz sampling rate yields a *.ppd* file of ~1.8MB and a *.csv* file of ~8MB.
+The binary data files are more compact than the .csv files,  a 1 hour recording at 130Hz sampling rate yields a *.ppd* file of ~3.6MB and a *.csv* file of ~8MB.
 
 ## Importing data
+
+!!! note "Compatibility"
+    The `.ppd` file format changed in version v1.1 of the pyPhotometry software such that in pulsed acquisition modes, rather than saving the analog signals after baseline subtraction, the raw LED-on signal and LED-off baseline are saved separately.  The version >= 1.1 data import code for both Python and Matlab support both old and new `.ppd` files, but data import code from version <1.1 will not correctly open files generated with pyPhotometry v1.1 or later.
 
 If you are using Python for analysis you can import *.ppd* files using the `import_ppd` function in the [data_import](https://github.com/pyPhotometry/code/blob/master/tools/data_import.py) module:
 
@@ -27,17 +30,18 @@ The `import_ppd` function returns a dictionary with the following entries:
 'sampling_rate' # Sampling rate (Hz)
 'LED_current'   # Current for LEDs 1 and 2 (mA)
 'version'       # Version number of pyPhotometry
-'analog_1'      # Raw analog signal 1 (volts)
-'analog_2'      # Raw analog signal 2 (volts)
-'analog_3'      # Raw analog signal 3 (if present) (volts)
-'analog_1_filt' # Filtered analog signal 1 (volts)
-'analog_2_filt' # Filtered analog signal 2 (volts)
-'digital_1'     # Digital signal 1
-'digital_2'     # Digital signal 2
-'pulse_inds_1'  # Locations of rising edges on digital input 1 (samples).
-'pulse_inds_2'  # Locations of rising edges on digital input 2 (samples).
-'pulse_times_1' # Times of rising edges on digital input 1 (ms).
-'pulse_times_2' # Times of rising edges on digital input 2 (ms).
+'n_analog_signals'  # Number of analog signals
+'n_digital_signals' # Number of digital signals
+# For each analog signal x in [1, n_analog_signals]
+'analog_x'      # Analog signal (volts).  This is the baseline subtracted signal if in pulsed modes.
+'analog_x_filt' # Filtered analog signal (volts).
+'analog_x_raw_LED_on' # Analog signal before baseline subtraction (volts), pulsed modes only.
+'analog_x_raw_baseline' # Baseline signal with LED off (volts), pulsed modes only.'
+'analog_x_clipping' # Samples where analog signal was clipping (bool), i.e. input voltage >= 3.3V.
+# For each analog signal x in [1, n_digital_signals]
+'digital_x'     # Digital signal (bool).
+'pulse_inds_x'  # Locations of rising edges on digital input (samples).
+'pulse_times_x' # Times of rising edges on digital input (ms).
 'time'          # Time of each sample relative to start of recording (ms)
 ```
 
@@ -85,16 +89,26 @@ The first two bytes of the file indicate the size of the header.  The header is 
 ```python
 'subject_ID'         # Subject ID
 'date_time'          # Recording start date and time (ISO 8601 format string)
+'end_time'           # Recording end data and time (ISO 8601 format string)
 'mode'               # Acquisition mode
 'sampling_rate'      # Sampling rate (Hz).
 'version'            # Version number of pyPhotometry
 'volts_per_division' # Volts per division of the analog signals.
 'LED_current'        # Current for LEDs 1 and 2 (mA)
+'n_analog_channels'  # Number of analog channels
+'n_digital_channels' # Number of digital channels
 ```
 
-The remainder of the data file contains the analog and digital signals.  Each two bytes chunk of data encodes a 16 bit little endian unsigned integer. The most significant 15 bits of each integer encode one sample of an analog signal and the least significant bit encodes one sample of a digital signal.  Analog channel 1 and digital channel 1 are paired together, and analog channel 2 and digital channel 2 are paired together. Channels 1 and 2 alternate in successive 2 byte chunks.  To convert the analog signals to volts, multiply them by the 'volts_per_division' value from the header information.
+The remainder of the data file contains the analog and digital signals.  Each two bytes chunk of data encodes a 16 bit little endian unsigned integer. The most significant 15 bits of each integer encode one sample of analog signal and the least significant bit encodes one sample of digital signal.  To convert the analog samples to volts, multiply them by the *'volts_per_division'* value from the header information.  
 
-In Python, the steps to convert the data bytes into signals are:
+In continuous acquisition modes and pulsed modes prior to version 1.1 (where only the baseline-subtracted signal is saved) the sequence of samples is:
+
+| Sample number modulo n_analog_channels | Analog data (15 most significant bits) | Digital data (least significant bit) |
+| -------------------------------------- | -------------------------------------- | ------------------------------------ |
+| 1                                      | Analog channel 1                       | Digital channel 1                    |
+| 2                                      | Analog channel 2                       | Digital channel 2                    |
+
+In Python the steps to convert these data into signals are:
 
 ```python
 # Convert the data bytes into an array of 16 bit unsigned integers.
@@ -109,19 +123,50 @@ analog = data >> 1
 digital = data & 1
 
 # Channels 1 and 2 are alternating samples:
-analog_1  =  analog[0::2] 
-analog_2  =  analog[1::2]
+analog_1  =  analog[0::2] * volts_per_division
+analog_2  =  analog[1::2] * volts_per_division
 digital_1 = digital[0::2]
 digital_2 = digital[1::2]
-
-# Convert the analog signals into volts.
-analog_1 = analog_1 * volts_per_division[0]
-analog_2 = analog_2 * volts_per_division[1]
 ```
 
-## Comma seperated value data format
+In pulsed acquisition modes in pyPhotometry version 1.1 and later, the LED-on signal and LED-off baseline for each channel are saved separately in sequential samples yielding the following sequence of samples:
 
-The *.csv* files generated by pyPhotometry are UTF-8 encoded text files with 4 entries per line, seperated by commas.  Each line contains one sample each from the two analog inputs and two digital inputs, in the order:
+| Sample number modulo 2*n_analog_channels | Analog data (15 most significant bits) | Digital data (least significant bit) |
+| ---------------------------------------- | -------------------------------------- | ------------------------------------ |
+| 1                                        | Analog channel 1 led-on signal         | Digital channel 1                    |
+| 2                                        | Analog channel 1 led-off baseline      |                                      |
+| 3                                        | Analog channel 2 led-on signal         | Digital channel 2                    |
+| 4                                        | Analog channel 2 led-off baseline      |                                      |
+
+In Python the steps to convert these data into signals are:
+
+```python
+# Convert the data bytes into an array of 16 bit unsigned integers.
+data = numpy.frombuffer(data_bytes, dtype=numpy.dtype('<u2')) 
+
+# Analog signals are most significant 15 bits of each integer,
+# extract them by bit shifting 1 to the right.
+analog = data >> 1
+
+# Digital signals are least significant bit of each integer,
+# extract them by bitwise AND with integer 1.
+digital = data & 1
+
+# Extract signals and baselines and compute baseline subtracted signal.
+analog_1_LED_on_sig = analog[0::4] * volts_per_division # LED-on signal
+analog_1_baseline = analog[1::4] * volts_per_division   # LED-off baseline
+analog_1 = analog_1_LED_on_sig - analog_1_baseline # Baseline subtracted signal.
+analog_2_LED_on_sig = analog[2::4] * volts_per_division # LED-on signal
+analog_2_baseline = analog[3::4] * volts_per_division   # LED-off baseline
+analog_2 = analog_2_LED_on_sig - analog_2_baseline # Baseline subtracted signal.
+
+digital_1 = digital[0::4]
+digital_2 = digital[2::4]
+```
+
+## Comma separated value data format
+
+The *.csv* files generated by pyPhotometry are UTF-8 encoded text files with 4 entries per line, separated by commas.  Each line contains one sample each from the two analog inputs and two digital inputs, in the order:
 
 ```
 Analog_1, Analog_2, Digital_1, Digital_2

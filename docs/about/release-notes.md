@@ -8,6 +8,37 @@
 
 ## Change log
 
+### Version 1.1 (2025-11-18)
+
+- Added ability to select acquisition board type so LED currents are calibrated correctly for the v2 acquisition board.
+- Added warnings when signal saturates, i.e. when analog input voltage is >= 3.3V.
+- Added option to output sync pulses on Digital 1.
+- In pulsed acquisition modes, the LED-on signal and LED-off baseline are now saved separately in the `.ppd` file rather than saving only the the baseline subtracted signal.   This allows the user to identify at analysis time any periods where signals were saturating.  
+
+!!! note "Note"
+    The new Python and MATLAB data import modules support both old and new `.ppd` files,  however older versions of the data import code will not correctly open the new `.ppd` files.
+
+- GUI UI improvements:  
+    - Separate *Control All* buttons for *Connect*, *Play*, *Record* and *Stop* rather than dropdown menu.
+    - Separate *Save* and *Save as* buttons for saving experiment configurations. 
+    - Optional lowpass filtering on plotted signals.
+
+---
+
+### Version 1.0.2 (2024-05-14)
+
+- Fixed bug where Digital Input 2 was not recorded correctly in 2EX_1EM acqusition mode.
+- Improved controls for setting Y range of plot.
+- Fixed bug that could cause configurations not to load correctly if loaded when connected to a pyboard.
+
+---
+
+### Version 1.0.1 (2024-02-05)
+
+- Fixed bug where LED current controls in GUI could be increased above the maximum valid value.
+
+---
+
 ### Version 1.0 (2024-01-04)
 
 - GUI now supports acquisition from multiple setups in parallel.
@@ -24,7 +55,7 @@
 
 - preprocess_data function added to data import module.
 
---- 
+---
 
 ### Version 0.3.3 (2023-07-28)
 
@@ -70,7 +101,7 @@
 
 - Added button icons.
 
---- 
+---
 
 ### Version 0.2.1 (2019-05-10)
 
@@ -94,7 +125,7 @@ Version detailed in Scientific Reports Manuscript.
 
 - Added function for importing *.ppd* files into Matlab.
 
---- 
+---
 
 ### Version 0.1 (2018-10-02)
 
